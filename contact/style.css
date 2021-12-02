@@ -1,0 +1,238 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,500;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Clicker+Script&display=swap');
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    line-height: 1.5;
+}
+html {
+    font-size: 18px;
+    font-family: 'Roboto', sans-serif;
+}
+p {
+    font-size: 16px;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: #101010;
+}
+.header{
+    border-bottom: 1px solid #E2E8F0;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+}
+.hamburger {
+    display: none;
+}
+
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    background-color: #101010;
+}
+.nav-menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-item {
+    margin-left: 5rem;
+}
+
+.nav-link{
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: #475569;
+}
+
+.active{
+    background-color: #87A2E8;
+}
+button {
+    padding: 9px 25px;
+    background-color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+
+button:hover {
+    background-color: #87A2E8;
+}
+.nav-logo {
+    max-width: 60%;
+}
+
+
+.main {
+    width: 100%;
+    height: auto;
+    border: 1px solid #c3c3c3;
+    display: flex;
+    justify-content: center;
+  }
+
+  .main .sub-main {
+    width: 50%;
+    height: auto;
+    text-align: center;
+    justify-content: center;
+  }
+  .main div ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+  .main div li {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-left: 15px;
+  }
+
+
+  .main-container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .container {
+    height: 50%;
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 12px;
+    background-color: #EBEBEB;
+  }
+  .shade {
+    box-shadow: 0 0 5px 1px black;
+    width: 438px;
+    height: 261px;
+    background-color: #fff;
+  }
+  .main-container div ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+  .box {
+    color: black;
+    padding: 40px;
+    text-align: center;
+    height: fit-content;
+  }
+  table {
+    width: 100%;
+  }
+  table input{
+      border-radius: 3px;
+      max-width: 376px;
+      height: 30px;
+      border: 1px #0768C1 solid;
+  }
+  textarea {
+    border: 1px #0768C1 solid;
+  }
+
+  th,tr {
+    text-align: left;
+    font-family: 'Roboto', sans-serif;
+    color: #000000;
+  }
+
+
+
+
+
+footer{
+    flex: 1;
+    background-color: #D3E1F6;
+    height: 90px;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    bottom: 0;
+    padding-right: 20px;
+    position: fixed;
+    margin-top: 10vh;
+    border-top-left-radius: 50px;
+}
+footer ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 15px;
+}
+footer ul li {
+    list-style: none;
+    font-size: 15px ;
+    font-weight: bold;
+}
+
+h3 {
+    font-family: 'Clicker Script', cursive;
+}
+.box-foot {
+    width: 200px;
+    border-left: 2px black solid;
+    border-right: 2px black solid;
+    text-align: center;
+
+}
+.fot {
+    margin-top: 5px;
+}
+.ico {
+    color: #699BF7;
+}
+
+/*responsive*/
+@media only screen and (max-width: 768px) {
+.nav-menu,.cont{
+    position: fixed;
+    left: -100%;
+    top: 5rem;
+    flex-direction: column;
+    background-color: #fff;
+    width: 100%;
+    border-radius: 10px;
+    text-align: center;
+    transition: 0.3s;
+    box-shadow:
+        0 10px 27px rgba(0, 0, 0, 0.05);
+}
+
+.nav-menu.active {
+    left: 0;
+}
+
+.nav-item {
+    margin: 2.5rem 0;
+}
+
+.hamburger {
+    display: block;
+    cursor: pointer;
+}
+
+}
