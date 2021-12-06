@@ -79,76 +79,78 @@ button:hover {
 .nav-logo {
     max-width: 60%;
 }
-.flex-container {
-    display: flex;
-    justify-content: center;
-    background-color: white;
-  }
-.box {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 100px;
-  }
-  .box2 {
-    display: flex;
-    align-items: center;
-    justify-content: start;
-    margin-top: 100px;
-  }
-  .box div {
-    width: 100px;
-    height: 48px;
-  }
-  .box2 div {
-    width: 100px;
-    height: 48px;
-  }
-  .left-img {
-    width: 100px;
-    height: 48px;
-  }
-input {
-    width: 300px;
-    height: 40px;
-    border: 2px #1756F9 solid;
-    border-radius: 20px;
-    padding: 10px;
-}
-button.login{
-    background-color: #0768C1;
-    width: 300px;
-    height: 40px;
-    border-radius: 20px;
-    font-size: 18px;
-}
-form button {
-    height: 35px;
-    background-color: #5083D0;
-    border: none;
-    border-radius: 5px;
-    font-size: 25px;
-    color: white;
 
-}
-.pic-log{
-    max-width: 100%;
-    max-height: fit-content;
-}
 
-p {
-   font-size: 12px;
-   width: 180px;
-}
-span  {
-    color: red;
-
-    font-size: 20px;
+.whit{
+    color: rgb(39, 34, 34);
+    font-weight: bold;
 }
 
 
 
 
+
+.box-center{
+        display: flex;
+        justify-content: center;
+        margin-bottom: 100px;
+}
+
+ 
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  
+
+    .heed-1{
+        border: 2px #f4f5f5 solid;
+        width: 85%;
+        justify-content: center;
+        margin-top: 20px;
+    }
+    .cent{
+        justify-content: center;
+        padding: 20px;
+    }
+    .exp1{
+        width: 100%;
+    }
+   
+      .col {
+        float: left;
+        width: 98%;
+        padding: 5px;
+        border: 2px #f4f5f5 solid;
+      }
+      .col1 {
+        float: left;
+        width: 40%;
+        padding: 5px;
+      }
+      .skil{
+          width: 100%;
+          padding: 20px;
+          margin-left: 10px;
+          margin-right: 10px;
+      }
+      .marg {
+        margin-top: 10px;
+    }
+    .blog-text button {
+        background-color: aqua;
+    }
+    input {
+        border: 2px #2E6FAA solid;
+        border-radius: 20px;
+        width: 250px;
+        padding: 5px;
+    }
+    .sub {
+        background-color: #2E6FAA;
+    }
 
 footer{
     flex: 1;
@@ -220,5 +222,7 @@ h3 {
     display: block;
     cursor: pointer;
 }
-
+.column {
+    width: 100%;
+  }
 }
