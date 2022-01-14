@@ -5,75 +5,138 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../menu/menu.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
     integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
     <title>Basha-Login</title>
 </head>
 <body>
-    <header class="header">
-        <nav class="navbar">
-            <a href="#"><img class="nav-logo" src="../Images/logo.png" alt="logo"></a>
-            <ul class="nav-menu">
-                <li class="nav-item"><a href="../index.html"><button>Home</button></a></li>
-                <li class="nav-item"><a href="../About/about.html"><button>About me</button></a></li>
-                <li class="nav-item"><a href="../Blog/blog.html"><button>Blog</button></a></li>
-            </ul>
-            <a class="cont" href="../contact/contact.html"><button>Contact us</button></button></a>
-            <div class="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-        </nav>
-    </header>
-    <div class="flex-container">
-        <div style="flex-grow: 6">
-            <div class="box">
-                <div>
-                    <form>
-                        <div class="input-container">
-                            <input type="email" placeholder="&#xf002;  insert email address ...">
-                        </div>
-                        <div class="input-container">
-                            <input type="password" placeholder="&#xF002">
-                        </div>
-                        <div>
-                            <button class="login" type="submit">Login</button>
-                            <p>Don’t have account? <span><a style="color: red;" href="signup.html">Signup</a></span></p>
-                        </div>
-                    </form>
-                </div>
+    <section class="site">
+        <div class="header">
+            <div class="container">
+                <nav class="nav">
+    
+                    <div class="log-container">
+                        <img src="../Images/logo.png" alt="" class="Bashalogo">
+                    </div>
+                    <div class="humburger-btn" id="humburger">
+                        <span class="line-1"></span>
+                        <span class="line-2"></span>
+                        <span class="line-3 "></span>
+                    </div>
+                    
+                    <div class="nav-menu" id="Menu">
+                        <ul class="ul">
+                            <li class="link-item">
+                              <a href="../index.html"><button>Home</button></a>
+                            <li class="link-item">
+                              <a href="../About/about.html"><button>About me</button></a>
+                            </li>
+                            <li class="link-item">
+                              <a href="../Blog/blog.html"><button>Blog</button></a>
+                            </li>
+                            <li class="link-item">
+                              <a class="cont" href="../contact/contact.html"><button>Contact us</button></a>
+                            </li>
+                            <li class="link-item">
+                              <a href="../Account/login.html" id="in"><button   class="active">Login</button></a>
+                              <li class="link-item">
+                                <a href="../Account/signup.html" id="up"><button>Signup</button></a>
+                                <form id="logout">
+                                  <button class="signout" id="out" style="display: none;">signout</button>
+                                </form>
+                            </li>
+                          </li>
+                        </ul>
+                    </div>
+                </nav>
             </div>
         </div>
-        <div style="flex-grow: 4">
-            <div class="box2">
-                <div class="left-img">
-                    <img class="pic-log" src="../Images/login.png" alt="login">
-                </div>
-            </div>
+      </section>
+      </section>
+    <div class="flex-container">
+        <div id='login-div' style="flex-grow: 3">
+            <div class="wrapper">
+                <form id="login-form">
+                  <div class="field email">
+                    <div class="input-area">
+                      <input type="email" placeholder="Email Address" id="emaill">
+                      <i class="icon fas fa-envelope"></i>
+                    </div>
+                    <div>
+                      <p class="errors" id="emailError">Error with email</p>
+                      <p class="valid" id="emailValid">valid</p>
+                    </div>
+                  </div>
+                  <div class="field password">
+                    <div class="input-area">
+                      <input type="password" placeholder="Password" id="passwordl">
+                      <i class="icon fas fa-lock"></i>
+                    </div>
+                    <div>
+                      <p class="errors" id="passwordError">Error with password</p>
+                      <p class="valid" id="passwordValid">valid</p>
+                    </div>
+                  </div>  
+                  <!-- <div class="pass-txt"><a href="#">Forgot password?</a></div> -->
+                  <input type="submit" value="Login">
+                  <button>SignIn</button>
+                </form>
+                <div class="sign-txt">Don't have Account? <a href="signup.html">Signup</a></div>
+              </div>
+        </div>
+        <div style="flex-grow: 4" class="left-pic" id="log-pic">
+          <div class="box2">
+              <div class="left-img">
+                  <img class="pic-log1" src="../Images/login.png" alt="login">
+              </div>
+          </div>
+      </div>
+        <div class="cent-log" id="user-div" style="display: none;">
+          <div>
+            <form id="logout">
+              <img class="pic-log" src="../Images/login.png" alt="login" id="img">
+              <p id="emailname">Basha</p>
+              <button class="signout">Sign out</button>
+            </form>
+          </div>
         </div>
     </div>
 
 
     <footer>
         <ul class="footer-ul">
+          <div class="foot" style="margin-left: 20px;">
             <li class="fot"><a href="#">Contact Us</a></li>
             <li class="fot"><a href="#">Blog</a></li>
+          </div>
             <li>
                 <div class="box-foot">
                     <h3>Basha</h3>
                     <div class="box-ic">
-                        <ul class="ico">
-                            <li><i class="fab fa-facebook"></i></li>
-                            <li><i class="fab fa-twitter"></i></li>
-                            <li><i class="fab fa-linkedin"></i></li>
-                            <li><i class="fab fa-instagram"></i></li>
+                        <ul>
+                            <li><a class="ico" href="https://web.facebook.com/nyiringango.pacifique/"><i class="fab fa-facebook fa-2x"></i></a></li>
+                            <li><a class="ico" href="https://twitter.com/pacificnyir"><i class="fab fa-twitter fa-2x"></i></a></li>
+                            <li><a class="ico" href="linkedin.com/in/nyiringango-pacific-94020b151/"><i class="fab fa-linkedin fa-2x"></i></a></li>
+                            <li><a class="ico" href="https://www.instagram.com/nypacifique/"><i class="fab fa-instagram fa-2x"></i></a></li>
                         </ul>
                     </div>
                 </div>
             </li>
-            <li class="fot">Rwanda based programmer<a href="#"></a></li>
+            <div class="foot">
+              <li class="fot">Rwanda programmer<a href="#"></a></li>
+              <li class="fot">2021<a href="#"></a></li>
+            </div>
+            
         </ul>
     </footer>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+    <script src="../menu/menu.js"></script>
+    <script src="../Blog/createblog/fireconfig.js"></script>
+    <script src="loginscript.js"></script>
 </body>
 </html>

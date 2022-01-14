@@ -5,93 +5,239 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="createblog/style.css">
+    <link rel="stylesheet" href="../menu/menu.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
     integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-    <title>Basha-Login</title>
+    <title>Basha-Blog</title>
 </head>
-<body>
-    <header class="header">
-        <nav class="navbar">
-            <a href="#"><img class="nav-logo" src="../Images/logo.png" alt="logo"></a>
-            <ul class="nav-menu">
-                <li class="nav-item"><a href="../index.html"><button>Home</button></a></li>
-                <li class="nav-item"><a href="../About/about.html"><button>About me</button></a></li>
-                <li class="nav-item"><a href="#"><button  class="active">Blog</button></a></li>
-            </ul>
-            <a class="cont" href="../contact/contact.html"><button>Contact us</button></button></a>
-            <div class="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-        </nav>
-    </header>
-
-
+<body onload="readBlog()">
+  <!--header-->
+    <section class="site">
+      <div class="header">
+          <div class="container">
+              <nav class="nav">
+                  <div class="log-container">
+                    <img src="../Images/logo.png" alt="" class="Bashalogo">
+                  </div>
+                  <div class="humburger-btn" id="humburger">
+                    <span class="line-1"></span>
+                    <span class="line-2"></span>
+                    <span class="line-3 "></span>
+                  </div>
+                  <div class="nav-menu" id="Menu">
+                      <ul class="ul">
+                          <li class="link-item">
+                            <a href="../index.html"><button>Home</button></a>
+                          <li class="link-item">
+                            <a href="../About/about.html"><button>About me</button></a>
+                          </li>
+                          <li class="link-item">
+                            <a href="#"><button  class="active">Blog</button></a>
+                          </li>
+                          <li class="link-item">
+                            <a class="cont" href="../contact/contact.html"><button>Contact us</button></a>
+                          </li>
+                          <li class="link-item">
+                            <a href="../Account/login.html"><button>Login</button></a>
+                          </li>
+                      </ul>
+                  </div>
+              </nav>
+          </div>
+      </div>
+    </section>
+    <!--add blog btn-->
     <div class="box-center">
-        <div class="heed-1">
-            <div class="row cent">
-                <div class="col">
-                            <div class="col1">
-                                <img src="../Images/test1.png" alt="blog">
-                            </div>
-                            <div class="col1">
-                                <div class="blog-text">
-                                    <h2>Post 1</h2>
-                                    <p class="marg">here is my first blog post hop you are good</p>
-                                    <p class="marg">Fri Dec 2021</p>
-                                    <button>Read more</button>
-                                </div>
-                            </div>
-                </div>
-                <div class="col">
-                            <div class="col1">
-                                <img src="../Images/test1.png" alt="blog">
-                            </div>
-                            <div class="col1">
-                                <div class="blog-text">
-                                    <h2>Post 1</h2>
-                                    <p class="marg">here is my first blog post hop you are good</p>
-                                    <p class="marg">Fri Dec 2021</p>
-                                    <button>Read more</button>
-                                </div>
-                            </div>
-                </div>
+      <div class="heed-1">
+            <button class="addbtn" id="myBtn">Add blog</button>
+            <!--blog post section-->
+            <div class="row cent" id="cardSection">
+            </div>
+            <!--read more section-->
+            <div class="row cent" id="cardSect">
             </div>
         </div>
     </div>
-
     <div class="box-center">
+    </div>
+    <!-- Create Modal Modal -->
+    <div id="createModal" class="modal">
+      <div class="modal-content">
+          <span class="close">&times;</span>
+          <h2>Create new Blog</h2>
+          <div class="container">
+            <div class="row">
+            <!-- <form id="form"> -->
+              <div class="col-25">
+                <label for="fname">Title</label>
+              </div>
+              <div class="col-75">
+                <input type="text" id="title" name="title" placeholder="title..">
+                <div>
+                  <p class="errors" id="titleError">Error with title</p>
+                  <p class="valid" id="titleValid">valid</p>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-25">
+                <label for="lname">body</label>
+              </div>
+              <div class="col-75">
+                <input type="text" id="bod" name="bod" placeholder="body..">
+                <div>
+                  <p class="errors" id="bodyError">Error with body</p>
+                  <p class="valid" id="bodyValid">valid</p>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-25">
+                <label for="date">Select Image</label>
+              </div>
+              <div class="col-75">
+                <input type="file" name="Files[]" id="files" multiple accept="image/png,image/jpeg">
+                <div>
+                  <p class="errors" id="fileError">Error with file</p>
+                  <p class="valid" id="fileValid">valid</p>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-25">
+                <label for="subject">Subject</label>
+              </div>
+              <div class="col-75">
+                <textarea id="subject" name="subject" placeholder="Write something.." style="height:100px"></textarea>
+                <div>
+                  <p class="errors" id="subjectError">Error with title</p>
+                  <p class="valid" id="subjectValid">valid</p>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <button class="sel" style="background-color: blue;" id="insert">insert</button>
+            </div>
+          <!-- </form> -->
+        </div>
+      </div>
+    </div>
+
+    <!--Edit blog modal-->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <span class="close1">&times;</span>
+            <h2>Edit Blog</h2>
+            <button class="backbtn"><a href="../Blog/blog.html">Back to blog</a></button>
+            <div class="container">
+              <div class="row">
+              <form id="editform">
+                <div class="col-25" style="display: none;">
+                  <label for="fname">ID</label>
+                </div>
+                <div class="col-75" style="display: none;">
+                  <input type="text" id="id1" name="id" placeholder="id..">
+                </div>
+                <div class="col-25">
+                  <label for="fname">Title</label>
+                </div>
+                <div class="col-75">
+                  <input type="text" id="title1" name="title" placeholder="title..">
+                  <div>
+                    <p class="errors" id="titleError">Error with title</p>
+                    <p class="valid" id="titleValid">valid</p>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-25">
+                  <label for="lname">body</label>
+                </div>
+                <div class="col-75">
+                  <input type="text" id="bod1" name="bod" placeholder="body..">
+                  <div>
+                    <p class="errors" id="bodyError">Error with body</p>
+                    <p class="valid" id="bodyValid">valid</p>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-25">
+                  <label for="date">Select Image</label>
+                </div>
+                <div class="col-75">
+                  <input type="file" name="Files[]" id="files1" multiple>
+                  <div>
+                    <p class="errors" id="fileError">Error with file</p>
+                    <p class="valid" id="fileValid">valid</p>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-25">
+                  <label for="subject">Subject</label>
+                </div>
+                <div class="col-75">
+                  <textarea id="subject1" name="subject" placeholder="Write something.." style="height:100px"></textarea>
+                  <div>
+                    <p class="errors" id="subjectError">Error with title</p>
+                    <p class="valid" id="subjectValid">valid</p>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <button class="sel" style="background-color: rgb(18, 233, 143); color: black;" id="update" onclick="updateBlog()">update</button>
+              </div>
+            </form> 
+          </div>
+        </div>
+      </div>
+
+    <div class="box-center sub-bot">
         <div>
             <h2>Stay Tuned</h2>
             <p>want keep getting updates? Subscribe here</p>
             <form>
-                <input type="text" placeholder="your email">
+                <input class="subscribe" type="text" placeholder="your email">
                 <button class="sub">Subscribe</button>
             </form>
         </div>
     </div>
-
-
+    <!--footer-->
     <footer>
         <ul class="footer-ul">
+          <div class="foot" style="margin-left: 20px;">
             <li class="fot"><a href="#">Contact Us</a></li>
             <li class="fot"><a href="#">Blog</a></li>
+          </div>
             <li>
                 <div class="box-foot">
                     <h3>Basha</h3>
                     <div class="box-ic">
-                        <ul class="ico">
-                            <li><i class="fab fa-facebook"></i></li>
-                            <li><i class="fab fa-twitter"></i></li>
-                            <li><i class="fab fa-linkedin"></i></li>
-                            <li><i class="fab fa-instagram"></i></li>
+                        <ul>
+                            <li><a class="ico" href="https://web.facebook.com/nyiringango.pacifique/"><i class="fab fa-facebook fa-2x"></i></a></li>
+                            <li><a class="ico" href="https://twitter.com/pacificnyir"><i class="fab fa-twitter fa-2x"></i></a></li>
+                            <li><a class="ico" href="linkedin.com/in/nyiringango-pacific-94020b151/"><i class="fab fa-linkedin fa-2x"></i></a></li>
+                            <li><a class="ico" href="https://www.instagram.com/nypacifique/"><i class="fab fa-instagram fa-2x"></i></a></li>
                         </ul>
                     </div>
                 </div>
             </li>
-            <li class="fot">Rwanda based programmer<a href="#"></a></li>
+            <div class="foot">
+              <li class="fot">Rwanda programmer<a href="#"></a></li>
+              <li class="fot">2021<a href="#"></a></li>
+            </div>
         </ul>
     </footer>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+    <script src="createblog/fireconfig.js"></script>
+    <script src="../menu/menu.js"></script>
+    <script src="script.js"></script>
+    <script src="createblog/script.js"></script>
+
 </body>
 </html>

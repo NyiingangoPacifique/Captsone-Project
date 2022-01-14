@@ -5,42 +5,61 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../menu/menu.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
     integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-    <title>Basha-Login</title>
+    <title>Basha-About</title>
 </head>
-<body>
-    <header class="header">
-        <nav class="navbar">
-            <a href="#"><img class="nav-logo" src="../Images/logo.png" alt="logo"></a>
-            <ul class="nav-menu">
-                <li class="nav-item"><a href="../index.html"><button>Home</button></a></li>
-                <li class="nav-item"><a href="../About/about.html"><button class="active">About me</button></a></li>
-                <li class="nav-item"><a href="../Blog/blog.html"><button>Blog</button></a></li>
-            </ul>
-            <a class="cont" href="../contact/contact.html"><button>Contact us</button></button></a>
-            <div class="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
+<body onload="readBlog()">
+    <!--nav-bar-->
+    <section class="site">
+        <div class="header">
+            <div class="container">
+                <nav class="nav">
+                    <div class="log-container">
+                        <img src="../Images/logo.png" alt="" class="Bashalogo">
+                    </div>
+                    <div class="humburger-btn" id="humburger">
+                        <span class="line-1"></span>
+                        <span class="line-2"></span>
+                        <span class="line-3 "></span>
+                    </div>
+                    <div class="nav-menu" id="Menu">
+                        <ul class="ul">
+                            <li class="link-item">
+                              <a href="../index.html"><button>Home</button></a>
+                            <li class="link-item">
+                              <a href="#"><button  class="active">About me</button></a>
+                            </li>
+                            <li class="link-item">
+                              <a href="../Blog/blog.html"><button>Blog</button></a>
+                            </li>
+                            <li class="link-item">
+                              <a class="cont" href="../contact/contact.html"><button>Contact us</button></a>
+                            </li>
+                            <li class="link-item">
+                              <a href="../Account/login.html"><button>Login</button></a>
+                          </li>
+                        </ul>
+                    </div>
+                </nav>
             </div>
-        </nav>
-    </header>
+        </div>
+    </section>
 
-
-
-
+<!--body-->
+<!--personal info-->
     <div class="box-center">
         <div class="heed">
             <div class="row">
                 <div class="column">
-                    <div class="cont">
+                    <div class="cont1">
                         <div class="head-prof">
                            <div class="oval">
-                            <img class="profile" src="../Images/profile.jpeg" alt="profile">
+                                <img class="profile" src="../Images/profile.jpeg" alt="profile">
                            </div>
                            <div class="about">
-                            <h2>About me</h2>
+                                <h2>About me</h2>
                            </div>
                         </div>
                         <div class="head-content">
@@ -60,26 +79,26 @@
                                 </div>
                             </li>
                             <li>
-                              <div>
-                                  <h3>Phone</h3>
-                                  <p>+250782395340</p>
-                              </div>
-                          </li>
-                          <li>
-                              <div>
-                                  <h3>Email</h3>
-                                  <p>pacifiquenyiringango1998@gmail.com</p>
-                              </div>
-                          </li>
+                                <div>
+                                    <h3>Phone</h3>
+                                    <p>+250782395340</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div>
+                                    <h3>Email</h3>
+                                    <p>pacifiquenyiringango1998@gmail.com</p>
+                                </div>
+                            </li>
                         </ul>
                     </div>
                 </div>
-              </div>
+            </div>
         </div>
     </div>
+    <!--Experience-->
     <p class="experience">Experience</p>
     <div class="box-center">
-        
         <div class="heed-1">
             <div class="row cent">
                 <div class="column1">
@@ -102,46 +121,42 @@
             </div>
         </div>
     </div>
-
-
+    <!--Skills-->
     <p class="experience">Skills</p>
+    <div class="add-sk">
+        <a href="createskills.html">add skills</a>
+    </div>
     <div class="box-center">
-        
         <div class="heed-1">
-            <div class="row cent">
-                <div class="col">
-                    <p>Frontend</p>
-                    <div class="exp1">
-                        <div class="skil">1</div>
-                        <div class="skil">2</div>
-                        <div class="skil">3</div>
-                    </div>
+            <div class="wrapper">
+                <div id="skillSection">
+                    <ul class="nested" id="nested">
+                        </ul>
                 </div>
-                <div class="col">
-                    <p>BackEnd</p>
-                    <div class="exp1">
-                        <div class="skil">1</div>
-                        <div class="skil">2</div>
-                        <div class="skil">3</div>
-                        
-                    </div>
+                <div>
+                    <ul class="nested" id="backend">
+
+                    </ul>
                 </div>
-            <div class="col">
-                <p>DataBase</p>
-                <div class="exp2">
-                    <div class="skil">1</div>
-                    <div class="skil">2</div>
-                    <div class="skil">3</div>
+                <div>
+                    <ul class="nested">
+                        <li class="skil">
+                            <img  class="skil-img" src="../Images/test1.png" alt="">
+                        </li>
+                        <li>
+                            <img  class="skil-img" src="../Images/test1.png" alt="">
+                        </li>
+                        <li>
+                            <img  class="skil-img" src="../Images/test1.png" alt="">
+                        </li>
+                    </ul>
                 </div>
-            </div>
             </div>
         </div>
     </div>
-
-
+     <!--Education-->
     <p class="experience">Education</p>
     <div class="box-center">
-        
         <div class="heed-1">
             <div class="row cent">
                 <div class="column1">
@@ -164,29 +179,38 @@
             </div>
         </div>
     </div>
-
-
-
-
+    <!--footer-->
     <footer>
         <ul class="footer-ul">
-            <li class="fot"><a href="#">Contact Us</a></li>
-            <li class="fot"><a href="#">Blog</a></li>
+            <div class="foot" style="margin-left: 20px;">
+                <li class="fot"><a href="#">Contact Us</a></li>
+                <li class="fot"><a href="#">Blog</a></li>
+            </div>
             <li>
                 <div class="box-foot">
                     <h3>Basha</h3>
                     <div class="box-ic">
-                        <ul class="ico">
-                            <li><i class="fab fa-facebook"></i></li>
-                            <li><i class="fab fa-twitter"></i></li>
-                            <li><i class="fab fa-linkedin"></i></li>
-                            <li><i class="fab fa-instagram"></i></li>
+                        <ul>
+                            <li><a class="ico" href="https://web.facebook.com/nyiringango.pacifique/"><i class="fab fa-facebook fa-2x"></i></a></li>
+                            <li><a class="ico" href="https://twitter.com/pacificnyir"><i class="fab fa-twitter fa-2x"></i></a></li>
+                            <li><a class="ico" href="linkedin.com/in/nyiringango-pacific-94020b151/"><i class="fab fa-linkedin fa-2x"></i></a></li>
+                            <li><a class="ico" href="https://www.instagram.com/nypacifique/"><i class="fab fa-instagram fa-2x"></i></a></li>
                         </ul>
                     </div>
                 </div>
             </li>
-            <li class="fot">Rwanda based programmer<a href="#"></a></li>
+            <div class="foot">
+                <li class="fot">Rwanda programmer<a href="#"></a></li>
+                <li class="fot">2021<a href="#"></a></li>
+            </div>
         </ul>
     </footer>
 </body>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+<script src="../Blog/createblog/fireconfig.js"></script>
+<script src="../menu/menu.js"></script>
+<script src="script.js"></script>
 </html>
