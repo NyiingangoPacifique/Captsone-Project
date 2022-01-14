@@ -1,0 +1,288 @@
+:root {
+    --blue: #1e90ff;
+    --white: #fff;
+    --black: #101010;
+    --dark-white: #E5E5E5;
+    --cloud: #a7adb3;
+    --orange: orangered;
+    --red: red;
+    --green: rgb(74, 236, 74);
+  }
+* {
+    padding: 0;
+    margin: 0;
+}
+
+/*Nav bar start here*/
+.site {
+    background: var(--white);
+    min-height: 20vh;
+    width: 100%;
+    font-family: 'Ubuntu Mono', monospace;
+    margin-top: 0px !important;
+    overflow-x: hidden;
+
+}
+
+.header {
+    background: var(--white);
+    min-height: 55px;
+    box-shadow: 0 1px 6px 0 rgba(32, 33, 36, 0.28);
+    width: 100%;
+    right: 0;
+    position: fixed;
+    z-index: 200;
+
+}
+.container{
+    background-color: var(--white);
+}
+
+.landing-sect {
+    display: flex;
+    flex-flow: column;
+
+}
+
+
+.nav {
+    display: flex;
+    padding-left: 3%;
+}
+
+.nav-menu {
+    margin-left: auto;
+}
+
+.ul {
+    display: flex;
+    padding: 10px !important;
+    align-items: center;
+    float: right;
+}
+
+.ul li {
+    list-style: none;
+    font-size: 20px;
+    padding: 10px;
+}
+
+.link-item a {
+    text-decoration: none;
+    color: var(--black);
+}
+
+.humburger-btn {
+    display: grid;
+    width: 40px;
+    height: 40px;
+    place-items: center;
+    cursor: pointer;
+    padding-top: 12px;
+    z-index: 3000;
+    position: fixed;
+}
+
+.humburger-btn span {
+    width: 40px;
+    height: 4px;
+    background: var(--black);
+    display: block;
+    transition: all 0.4s ease-in-out;
+}
+
+.humburger-btn:hover span:nth-child(1) {
+    width: 30px;
+}
+
+.humburger-btn:hover span:nth-child(2) {
+    width: 25px;
+}
+
+.humburger-btn.active span:nth-child(1) {
+    transform-origin: center center;
+    transform: rotate(-45deg) translate(-13px, 10px);
+    width: 40px;
+}
+
+.humburger-btn.active span:nth-child(2) {
+    transform: translateX(10px);
+    opacity: 0;
+}
+
+.humburger-btn.active span:nth-child(3) {
+    transform-origin: center center;
+    transform: rotate(45deg) translate(-9px, -6px);
+    width: 40px;
+}
+
+.humburger-btn .line-1 {
+    width: 34px;
+    justify-self: start;
+}
+
+.humburger-btn .line-2 {
+    width: 20px;
+    justify-self: start;
+}
+
+
+.active{
+    --blue: #87A2E8;
+    background-color: var(--blue);
+}
+button {
+    padding: 9px 25px;
+    background-color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+
+button:hover {
+    --blue: #87A2E8;
+    background-color: var(--blue);
+}
+
+.logo {
+    width: 45px;
+    height: 45px;
+}
+
+.log-container {
+    padding-top: 10px;
+    display: grid;
+}
+
+.logo-caption {
+    text-decoration: none;
+    color: var(--black);
+    text-align: left;
+    font-size: 11px;
+    padding-bottom: 4px;
+
+}
+.nav-menu.active {
+    background-color: var(--white);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 9%;
+    opacity: 1;
+    height: auto;
+    position: fixed;
+    z-index: 2000;
+    vertical-align: top;
+    margin-left: -3%;
+    box-shadow: 0 1px 6px 0 rgba(32, 33, 36, 0.28);
+}
+
+/*footer*/
+footer{
+    flex: 1;
+    background-color: var(--dark-white);
+    height: 90px;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    bottom: 0;
+    padding-right: 20px;
+    position: fixed;
+    margin-top: 10vh;
+    border-top-left-radius: 50px;
+}
+footer ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 15px;
+}
+footer ul li {
+    list-style: none;
+    font-size: 15px ;
+    font-weight: bold;
+}
+
+h3 {
+    font-family: 'Clicker Script', cursive;
+}
+.box-foot {
+    width: 200px;
+    border-left: 2px var(--black) solid;
+    border-right: 2px var(--black) solid;
+    text-align: center;
+
+}
+.fot {
+    margin-top: 5px;
+}
+.fot a {
+    color: var(--black);
+    text-decoration: none;
+}
+.ico {
+    --blue: #699BF7;
+    color: var(--blue);
+}
+
+/*validation*/
+.errors {
+    color: var(--orange);
+    padding-top: 1%;
+    font-size: 12px;
+}
+.errors input{
+  border: 2px var(--red) solid;
+}
+.valid{
+    color: var(--green);
+    padding-top: 1%;
+    font-size: 12px;
+}
+
+@media screen and (min-width: 992px) {
+    .humburger-btn {
+        display: none;
+        transition: all 0.4s ease-in;
+    }
+
+}
+
+@media screen and (max-width: 992px) {
+
+    .nav-menu {
+        transition: opacity .7s ease-out;
+        opacity: 0;
+        height: 0;
+        overflow: hidden;
+    }
+
+    .log-container {
+
+       margin-top: 0px;
+
+    }
+    img {
+        max-width: 120px;
+        max-height: 120px;
+    }
+
+    .ul {
+        display: grid;
+        place-items: center !important;
+        padding-top: 6%;
+    }
+    .humburger-btn {
+       margin-left: 85%;
+    }
+    .foot {
+        display: block;
+        margin-top: 20px;
+    }
+    .fot {
+        font-size: 10px ;
+    }
+}
+

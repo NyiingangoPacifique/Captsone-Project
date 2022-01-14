@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="createcss.css">
+    <title>Document</title>
+    <style>
+      img{
+        height: 100px;
+        width: 100px;
+        border: 1px solid black;
+      }
+    </style>
+</head>
+<body>
+    <h2>Create new Blog</h2>
+     <button class="backbtn"><a href="about.html">Back to about</a></button>
+<div class="container">
+    <div class="row">
+      <!-- <form id="form"> -->
+        <div class="col-25">
+          <label for="category">Choose a Category:</label>
+        </div>
+        <div class="col-75">
+          <select name="category" id="category">
+            <option value="frontend">FrontEnd</option>
+            <option value="backend">BackEnd</option>
+            <option value="database">DataBase</option>
+          </select>
+          <div>
+            <p class="errors" id="catError">Error with title</p>
+            <p class="valid" id="catValid">valid</p>
+          </div>
+        </div>
+          <div class="col-25">
+            <label for="name">Name</label>
+          </div>
+          <div class="col-75">
+            <input type="text" id="name" name="name" placeholder="name">
+            <div>
+              <p class="errors" id="nameError">Error with title</p>
+              <p class="valid" id="nameValid">valid</p>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-25">
+            <label for="date">Select Image</label>
+          </div>
+          <div class="col-75">
+            <input type="file" name="Files[]" id="files">
+            <div>
+              <p class="errors" id="fileError">Error with title</p>
+              <p class="valid" id="fileValid">valid</p>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <button class="sel" style="background-color: blue;" id="insert">insert</button>
+        </div>
+  <!-- </form> -->
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+<script src="script.js"></script>
+<script src="../Blog/createblog/fireconfig.js"></script>
+</body>
+</html>

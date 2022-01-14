@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Basha-AddBlog</title>
+</head>
+<body>
+    <h2>Create new Blog</h2>
+     <button class="backbtn"><a href="../blog.html">Back to blog</a></button>
+<div class="container">
+    <div class="row">
+      <!-- <form id="form"> -->
+          <div class="col-25">
+            <label for="fname">Title</label>
+          </div>
+          <div class="col-75">
+            <input type="text" id="title" name="title" placeholder="title..">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-25">
+            <label for="lname">body</label>
+          </div>
+          <div class="col-75">
+            <input type="text" id="bod" name="bod" placeholder="body..">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-25">
+            <label for="date">Select Image</label>
+          </div>
+          <div class="col-75">
+            <input type="file" name="Files[]" id="files" multiple>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-25">
+            <label for="subject">Subject</label>
+          </div>
+          <div class="col-75">
+            <textarea id="subject" name="subject" placeholder="Write something.." style="height:100px"></textarea>
+          </div>
+        </div>
+        <div class="row">
+          <button class="sel" style="background-color: yellow; color: black;" id="retrieve">View</button>
+          <button class="sel" style="background-color: blue;" id="insert">insert</button>
+        </div>
+  <!-- </form> -->
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+<script src="script.js"></script>
+<script src="fireconfig.js"></script>
+</body>
+</html>

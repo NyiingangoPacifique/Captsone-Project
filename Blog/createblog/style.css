@@ -1,0 +1,88 @@
+:root {
+  --blue: #1e90ff;
+  --white: #fff;
+  --black: #101010;
+  --dark-white: #E5E5E5;
+  --cloud: #a7adb3;
+  --green: #04AA6D;
+}
+
+* {
+    box-sizing: border-box;
+  }
+  input[type=text], select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--dark-white);
+    border-radius: 4px;
+    resize: vertical;
+  }
+  
+  label {
+    padding: 12px 12px 12px 0;
+    display: inline-block;
+  }
+  .sel {
+    background-color: var(--green);
+    color: var(--white);
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    float: right;
+    margin-left: 5px;
+  }
+  .sel:hover {
+    --green: #45a049;
+    background-color: var(--green);
+  }
+  .container {
+    border-radius: 5px;
+    background-color: var(--dark-white);
+    padding: 20px;
+  }
+  .col-25 {
+    float: left;
+    width: 25%;
+    margin-top: 6px;
+  }
+  .col-75 {
+    float: left;
+    width: 75%;
+    margin-top: 6px;
+  }
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  a{
+    text-decoration: none;
+    color: var(--black);
+  }
+  .backbtn{
+    background-color: var(--cloud);
+    border: 1px solid var(--dark-white);
+  }
+  .errors {
+    width: auto;
+    display: none;
+    color: orangered;
+    padding-top: 1%;
+    font-size: 12px;
+  }
+  .valid{
+    width: auto;
+    display: none;
+    color: rgb(38, 238, 12);
+    padding-top: 1%;
+    font-size: 12px;
+  }
+  /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+  @media screen and (max-width: 600px) {
+    .col-25, .col-75, input[type=submit] {
+      width: 100%;
+      margin-top: 0;
+    }
+  }
