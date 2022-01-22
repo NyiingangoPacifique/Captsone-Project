@@ -7,6 +7,8 @@ const mongoose = require('mongoose')
 const authRoute = require('./routes/auth')
 const postRoute = require('./routes/post')
 const commentRoute = require('./routes/comments')
+const skillsRoute = require('./routes/skills')
+const contactRoute = require('./routes/contact')
 
 dotenv.config()
 //connection to DB
@@ -23,7 +25,9 @@ app.use(express.json())
 app.use('/api/user', authRoute)
 app.use('/api/post', postRoute)
 app.use('/api/comment', commentRoute);
+app.use('/api/skill', skillsRoute)
+app.use('/api/contact', contactRoute)
 
 app.listen(3000, ()=>
-  console.log('Server Up and runnin')
+  console.log('Server Up and running')
 );
