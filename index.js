@@ -24,6 +24,10 @@ mongoose.connect(
 //middleware
 app.use(express.json())
 
+app.get("/", (req, res) => {
+  return res.send("WELCOME TO MY BRAND");
+});
+
 //Route Middlewares
 app.use('/api/user', authRoute)
 app.use('/api/post', postRoute)
