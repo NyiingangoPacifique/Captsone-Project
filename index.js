@@ -13,7 +13,7 @@ require("dotenv").config();
 
 const PORT = process.env.PORT || process.env.LOCAL_PORT;
 
-dotenv.config()
+//dotenv.config()
 //connection to DB
 mongoose.connect(
     process.env.DB_CONNECT,
