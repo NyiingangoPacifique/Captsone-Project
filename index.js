@@ -9,6 +9,9 @@ const postRoute = require('./routes/post')
 const commentRoute = require('./routes/comments')
 const skillsRoute = require('./routes/skills')
 const contactRoute = require('./routes/contact')
+require("dotenv").config();
+
+const PORT = process.env.PORT || process.env.LOCAL_PORT;
 
 dotenv.config()
 //connection to DB
@@ -28,6 +31,6 @@ app.use('/api/comment', commentRoute);
 app.use('/api/skill', skillsRoute)
 app.use('/api/contact', contactRoute)
 
-app.listen(3000, ()=>
-  console.log('Server Up and running')
-);
+app.listen(PORT, () => {
+  console.log("connection started!!");
+});
