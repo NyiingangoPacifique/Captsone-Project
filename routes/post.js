@@ -4,7 +4,7 @@ const verifyAdmin =  require('../middleware/verifyAdmin')
 const Post = require('../model/Post')
 const User = require('../model/User')
 
-router.get('/check', verify, (req, res)=> {
+router.get('/check', (req, res)=> {
     res.send(req.user)
 })
 router.post ('/', async(req,res)=> {
