@@ -20,12 +20,8 @@ const userSchema= new mongoose.Schema({
         min: 6,
         max: 255
     },
-    date: {
-        type: Date,
-        default: Date.now
-    },
-    role: {
-        type: Boolean,
+    isadmin: {
+        type: Boolean
     }
 })
 

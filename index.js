@@ -2,6 +2,7 @@ const express = require('express')
 const app = express();
 const dotenv = require('dotenv')
 const mongoose = require('mongoose')
+const cors = require('cors')
 
 //import routes
 const authRoute = require('./routes/auth')
@@ -23,6 +24,11 @@ mongoose.connect(
 
 //middleware
 app.use(express.json())
+
+
+app.use(cors())
+
+
 
 app.get("/", (req, res) => {
   return res.send("WELCOME TO MY BRAND");

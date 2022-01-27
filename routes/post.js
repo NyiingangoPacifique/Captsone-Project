@@ -41,11 +41,9 @@ router.get('/:id', async(req,res)=> {
 router.patch('/:id', verify, async (req, res) => {
     try {
       const post = await Post.findOne({ _id: req.params.id });
-  
       if (req.body.title) {
         post.title = req.body.title;
       }
-  
       if (req.body.body) {
         post.body = req.body.body;
       }
@@ -59,7 +57,7 @@ router.patch('/:id', verify, async (req, res) => {
       post.date = new Date();
   
       await post.save();
-      res.send(post);
+      res.send(post, "post updated");
     } catch {
       res.status(404);
       res.send({ error: "Post doesn't exist!" });
@@ -71,10 +69,14 @@ router.delete('/:id', verify, async (req, res) => {
       const post = await Post.findOne({ _id: req.params.id });
       if (post) {
         await Post.deleteOne({ _id: req.params.id });
-        res.status(204).send();
+        //res.status(204).send("Post deleted");
+        return res.status(200).json({
+          status: 200,
+          message: 'Post Deleted successfully'
+        });
       } else {
         res.status(404);
-        res.send({ error: "Post doesn't exist!" });
+        res.send({ error: "Post doesn't exist1!" });
       }
     } catch (error) {
       res.status(404);

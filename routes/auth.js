@@ -22,7 +22,7 @@ router.post('/Register', async(req,res)=>{
         name: req.body.name,
         email: req.body.email,
         password: hashedPassword,
-        role: req.body.role
+        isadmin: req.body.isadmin
     })
     try {
         const savedUser = await user.save()
@@ -69,7 +69,7 @@ router.post('/login', async(req,res) => {
     if (validPass) {
       const data = {
         email: userFound.email,
-        role: userFound.role,
+        isadmin: userFound.isadmin
       };
       const token = jwt.sign({_id: userFound._id}, process.env.TOKEN_SECRET)
       //const token = jwt.sign(data, 'basha', { expiresIn: '1h' });

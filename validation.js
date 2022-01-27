@@ -13,8 +13,8 @@ const registerValidation = (data) => {
         password: Joi.string()
             .min(6)
             .required(),
-        role: Joi.boolean()
-        .required()
+        isadmin: Joi.boolean()
+        
 
     };
     return Joi.validate(data, schema);

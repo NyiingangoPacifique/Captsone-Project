@@ -1,5 +1,5 @@
 module.exports =verifyAdmin =  (req, res, next) => {
-    if (!req.user.role) {
+    if (req.user.isadmin) {
       next();
     } else {
       return res.status(403).json({
