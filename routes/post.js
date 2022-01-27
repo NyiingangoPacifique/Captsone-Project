@@ -7,7 +7,7 @@ const User = require('../model/User')
 router.get('/check', verify, (req, res)=> {
     res.send(req.user)
 })
-router.post ('/', verify, async(req,res)=> {
+router.post ('/', async(req,res)=> {
     const post = new Post({
         title:req.body.title,
         body: req.body.body,
