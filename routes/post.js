@@ -12,7 +12,7 @@ router.post ('/', async(req,res)=> {
         title:req.body.title,
         body: req.body.body,
         subject: req.body.subject,
-        image: 'now now'
+        image: req.body.image
     })
     try {
         const a1 = await post.save()
@@ -64,7 +64,7 @@ router.patch('/:id', verify, async (req, res) => {
     }
   });
 
-router.delete('/:id', verify, async (req, res) => {
+router.delete('/:id', async (req, res) => {
     try {
       const post = await Post.findOne({ _id: req.params.id });
       if (post) {

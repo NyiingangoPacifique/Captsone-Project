@@ -6,7 +6,7 @@ const router = express.Router();
 
 //add comments
 
-router.post ('/comment', verify, async(req,res)=> {
+router.post ('/comment', async(req,res)=> {
     const comment = new Comment({
         name: req.body.name,
         email: req.body.email,
