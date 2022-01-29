@@ -27,11 +27,11 @@ router.post('/Register', async(req,res)=>{
     try {
         const savedUser = await user.save()
         //show all
-        //res.send(savedUser)
+        res.send(savedUser)
         //show only id
-        res.send({user: user._id})
-        res.send({user: user._name})
-        res.send({user: user._email})
+        //res.send({user: user._id})
+        //res.send({user: user._name})
+        //res.send({user: user._email})
     } catch (error) {
         res.status(400).send(error)
     }
