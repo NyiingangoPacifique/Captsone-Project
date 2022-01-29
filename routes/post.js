@@ -54,7 +54,7 @@ router.patch('/:id', async (req, res) => {
     post.date = new Date();
     await post.save();
     res.status(200).send({
-      status: "Ok",
+      status: "Okk",
       message: "post updated succeddfuly",
       data: post,
     });
