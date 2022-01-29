@@ -38,7 +38,7 @@ router.get('/:id', async(req,res)=> {
     }
 })
 
-router.patch('/:id', verify, async (req, res) => {
+router.patch('/:id', async (req, res) => {
     try {
       const post = await Post.findOne({ _id: req.params.id });
       if (req.body.title) {
