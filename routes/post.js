@@ -38,30 +38,30 @@ router.get('/:id', async(req,res)=> {
     }
 })
 
-router.patch('/:id', verify, async (req, res) => {
-    try {
-      const post = await Post.findOne({ _id: req.params.id });
-      if (req.body.title) {
-        post.title = req.body.title;
-      }
-      if (req.body.body) {
-        post.body = req.body.body;
-      }
-
-      if (req.body.subject) {
-        post.subject = req.body.subject;
-      }
-      if (req.body.image) {
-        post.img = req.body.image;
-      }
-      post.date = new Date();
-  
-      await post.save();
-      res.send(post, "post updated");
-    } catch {
-      res.status(404);
-      res.send({ error: "Post doesn't exist!" });
+router.patch('/:id', async (req, res) => {
+  try {
+    const post = await Post.findOne({ _id: req.params.id });
+    if (req.body.title) {
+      post.title = req.body.title;
     }
+
+    if (req.body.subject) {
+      post.subject = req.body.subject;
+    }
+    if (req.body.image) {
+      post.image = req.body.image;
+    }
+    post.date = new Date();
+    await post.save();
+    res.status(200).send({
+      status: "Ok",
+      message: "post updated succeddfuly",
+      data: post,
+    });
+  } catch {
+    res.status(404);
+    res.send({ error: "Post doesn't exist!" });
+  }
   });
 
 router.delete('/:id', async (req, res) => {
