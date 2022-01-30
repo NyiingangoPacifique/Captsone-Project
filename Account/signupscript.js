@@ -16,6 +16,7 @@ function chooseFile(e){
  //===========Create Account with profile picture ======================
 
  const signupForm = document.querySelector('#signup-form');
+
  signupForm.addEventListener('submit', (e) => {
   e.preventDefault();
   const username = document.getElementById('uname').value;
@@ -32,9 +33,18 @@ function chooseFile(e){
     alert('One or More Extra Fields is Outta Line!!')
     return
   }
-  app_firebase.auth().createUserWithEmailAndPassword(email,pwd).then(auth =>{
-    app_firebase.storage().ref('users/'+auth.user.uid+ '/test1.png').put(file).then(function() {
+  const params = {
+    name : document.getElementById('uname').value,
+    email : document.getElementById('email').value,
+    password : document.getElementById('pwd').value
+  }
 
+  let url  = "https://mybrand-page.herokuapp.com/api/user/register";
+  const http = new XMLHttpRequest()
+  http.open('POST',url)
+  http.setRequestHeader('Content-type', 'application/json')
+  http.send(JSON.stringify(params)) // Make sure to stringify
+  http.onload = function() {
       document.getElementById("nameValid").style.display="none";
       document.getElementById("nameError").style.display="none";
       document.getElementById("emailValid").style.display="none";
@@ -43,42 +53,11 @@ function chooseFile(e){
       document.getElementById("passwordError").style.display="none";
       document.getElementById("fileValid").style.display="none";
       document.getElementById("fileError").style.display="none";
-      alert('User successfully Created');
+      //alert('User successfully Created');
+      alert(http.responseText)
       signupForm.reset();
-  }).catch(error => {
-    alert(error.message);
-  })
-
-}).catch(error => {
-      document.getElementById("emailValid").style.display="none";
-      document.getElementById("emailError").innerHTML=error.message;
-      document.getElementById("emailError").style.display="block";
-  alert(error.message);
-})
- });
-//=============check user=================
-auth.onAuthStateChanged((user) => {
-  if (user) {
-    app_firebase.storage().ref('users/' +user.uid + '/test1.png').getDownloadURL().then(imgUrl => {
-      img.src = imgUrl;
-    profileview.style.display="block";
-    signupview.style.display="none";
-    signuppic.style.display="none";
-    });
-  } else {
-    profileview.style.display="none";
-    signupview.style.display="block";
-    signuppic.style.display="block";
   }
-});
-
-//====logout=========
- const logout = document.querySelector('#logout');
-/*logout.addEventListener('click', (e) => {
-  e.preventDefault();
-  auth.signOut();
-});
-*/
+ });
 
 //=================================
 
@@ -138,7 +117,7 @@ function validate_email(email) {
       return true
     } else {
       document.getElementById("emailValid").style.display="none";
-      document.getElementById("emailError").innerHTML="No Uppercase allowed email format not correct";
+      document.getElemenresponseTexttById("emailError").innerHTML="No Uppercase allowed email format not correct";
       document.getElementById("emailError").style.display="block";
       return false
     }

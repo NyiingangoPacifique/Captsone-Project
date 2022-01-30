@@ -1,19 +1,3 @@
-var firebaseConfig = {
-  apiKey: "AIzaSyC_i2VXKQkJCJWAqvnDGwH2XOe-fVpEvdU",
-  authDomain: "test-javascript-20767.firebaseapp.com",
-  databaseURL: "https://test-javascript-20767-default-rtdb.firebaseio.com",
-  projectId: "test-javascript-20767",
-  storageBucket: "test-javascript-20767.appspot.com",
-  messagingSenderId: "632324638241",
-  appId: "1:632324638241:web:b4db0c778e14645d5a4560",
-  measurementId: "${config.measurementId}"
-};
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-// Initialize variables
-const auth = firebase.auth()
-const database = firebase.database()
-
 
 //------ modal==================
 window.onload = function() {
@@ -38,69 +22,43 @@ window.onload = function() {
       y.style.display = "none";
     }
   }
-
-
-  var name,email,message;
-var d = new Date();
-var t = d.getTime();
-var counter = t;
-var today = new Date();
-var dat = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-function readForm (){
-    username = document.getElementById("username").value;
-    email = document.getElementById("mail").value;
-    message = document.getElementById("message").value;
-    console.log(username,email,message);
-}
 function resetForm (){
   username = document.getElementById("username").value="";
   email = document.getElementById("mail").value="";
   message = document.getElementById("message").value="";
 }
-document.getElementById("sendBtn").onclick = function () {
-    readForm();
-    console.log(counter);
-    counter+=1;
-    console.log(counter);
-    console.log(dat);
+function readForm (){
+  username = document.getElementById("username").value;
+  email = document.getElementById("mail").value;
+  message = document.getElementById("message").value;
+}
+
+const contactForm = document.querySelector('#myForm');
+
+contactForm.addEventListener('submit', (e) => {
+ e.preventDefault();
+
+  readForm();
     if (validate_name(username) == false || validate_email(email) == false || validate_message(message) == false) {
       //alert('title or body is Outta Line!!')
       return
   }
-    /*firebase.database().ref('Comments/'+counter).set({
-                    id:counter,
-                    name:username,
-                    email:email,
-                    message: message,
-                    date: dat
+  const params = {
+    name : document.getElementById("username").value,
+    email : document.getElementById("mail").value,
+    message : document.getElementById('message').value
+  }
 
-                });
-                resetForm();
-                alert('Comment added');*/
-                var database_ref = database.ref()
-  
-                // Create User data
-                var user_data = {
-                  id:counter,
-                    name:username,
-                    email:email,
-                    message: message,
-                    date: dat
-                }
-            
-                // Push to Firebase Database
-                database_ref.child('Contact/' + counter).set(user_data)
-                resetForm();
-                alert('Message sent');
-}
-/*function writeUserData(userId, name, email, imageUrl) {
-  firebase.database().ref('users/' + userId).set({
-    username: name,
-    email: email,
-    profile_picture : imageUrl
-  });
-}*/
-
+  let url  = "https://mybrand-page.herokuapp.com/api/contact";
+  const http = new XMLHttpRequest()
+  http.open('POST',url)
+  http.setRequestHeader('Content-type', 'application/json')
+  http.send(JSON.stringify(params)) // Make sure to stringify
+  http.onload = function() {
+    //resetForm();
+    alert(http.responseText);
+  }
+})
 function validate_email(email) {
   const regx=/^[a-z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?(?:\.[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?)*$/;
   if(email ==="")

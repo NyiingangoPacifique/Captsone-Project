@@ -10,77 +10,69 @@ var t = d.getTime();
 var counter = t;
 var today = new Date();
 var dat = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-function readForm (){
-    category = document.getElementById("category").value;
-    skilname = document.getElementById("name").value;
-    file = document.getElementById('files').files[0];
-    console.log(skilname);
+function resetForm (){
+    document.getElementById("category").value="";
+    document.getElementById("name").value="";
+    document.getElementById('files').value="";
 }
 document.getElementById("insert").onclick = function () {
-    readForm();
-    console.log(counter);
-    counter+=1;
-    console.log(counter);
-    console.log(dat);
-    
-    console.log(category);
-
-    let storageRef = firebase.storage().ref('Skills');
-    let file = document.getElementById('files').files[0];
-    console.log(file);
 
     if (validate_category(category) == false || validate_name(skilname) == false || validate_file(file) == false) {
         //alert('title or body is Outta Line!!')
         return
     }
-    let thisRef = storageRef.child(file.name);
+    const params = {
+      category : document.getElementById("category").value,
+      name : document.getElementById("name").value,
+      image : document.getElementById('files').value
+    }
 
-    thisRef.put(file).then(res=> {
-        console.log('upload success');
-        console.log(thisRef);
-        alert("upload success");
-    }).catch(e=> {
-        console.log('Error'+e);
-    })
-    storageRef.child(file.name).getDownloadURL().then(url=> {
-        console.log(url)
-    
-                firebase.database().ref('Skills/'+counter).set({
-                    id:counter,
-                    link:url,
-                    name:skilname,
-                    category:category
-
-                });
-                alert('Skills added');
-
-            }).catch(e=> {
-                console.log(e)});
+    let url  = "https://mybrand-page.herokuapp.com/api/skill";
+    const http = new XMLHttpRequest()
+    http.open('POST',url)
+    http.setRequestHeader('Content-type', 'application/json')
+    http.send(JSON.stringify(params)) // Make sure to stringify
+    http.onload = function() {
+      resetForm();
+      readBlog();
+      alert(http.responseText);
+    }
 }
-
 //-----------------retrieve------------------
 function readBlog(){
-    var skil=firebase.database().ref("Skills/");
-    skil.on("child_added",function(data){
-        var skilValue=data.val();
-        var cat = skilValue.category;
-        console.log(cat);
-        if (cat ==='frontend'){
-        document.getElementById("nested").innerHTML+=`
-            <li class="skil">
-                <img  class="skil-img" src="${skilValue.link}" alt="">
-                <p>${skilValue.name}</p>
-            </li>
-        `}
-        if (cat ==='backend'){
-            document.getElementById("backend").innerHTML+=`
-                <li class="skil">
-                    <img  class="skil-img" src="${skilValue.link}" alt="">
-                    <p>${skilValue.name}</p>
-                </li>
-            `}
+  let url  = 'https://mybrand-page.herokuapp.com/api/skill';
+  let xhr  = new XMLHttpRequest()
+  xhr.open('GET', url, true)
+  xhr.onload = function () {
+  var post = JSON.parse(xhr.responseText);
+  if (xhr.readyState == 4 && xhr.status == "200") {
+    post.forEach(element => {
+      const cat = element.category;
+      console.log(cat);
+      if(cat === 'BackEnd')
+      {
+      document.getElementById("backend").innerHTML+=`
+          <li class="skil">
+              <img  class="skil-img" src="${element.image}" alt="">
+              <p>${element.name}</p>
+          </li>
+      `}
+      if(cat === 'FrontEnd')
+      {
+      document.getElementById("nested").innerHTML+=`
+          <li class="skil">
+              <img  class="skil-img" src="${element.image}" alt="">
+              <p>${element.name}</p>
+          </li>
+      `}
     })
+  } else {
+    console.error(post);
+  }
 }
+xhr.send()
+}
+
 
 
 // Validate Functions

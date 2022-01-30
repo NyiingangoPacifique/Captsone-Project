@@ -14,7 +14,7 @@ function readForm (){
     title = document.getElementById("title").value;
     bod = document.getElementById("bod").value;
     subject = document.getElementById("subject").value;
-    file1 = document.getElementById('files').files[0];
+    file1 = document.getElementById('files').value;
     console.log(title,bod,subject);
 }
 function resetForm (){
@@ -29,49 +29,42 @@ document.getElementById("insert").onclick = function () {
     counter+=1;
     console.log(counter);
     console.log(dat);
-
-    let storageRef = firebase.storage().ref('Images');
-    let file = document.getElementById('files').files[0];
-    console.log(file);
-
-    let thisRef = storageRef.child(file.name);
-    if (validate_title(title) == false || validate_body(bod) == false || validate_subject(subject) == false || validate_file(file) == false) {
-        //alert('title or body is Outta Line!!')
-        return
+      // Form fields, see IDs above
+      const params = {
+        title : document.getElementById("title").value,
+        body : document.getElementById("bod").value,
+        subject : document.getElementById("subject").value,
+        image : document.getElementById('files').value,
       }
-    thisRef.put(file).then(res=> {
-        console.log('upload success');
-        console.log(thisRef);
-        //alert("upload success");
-    }).catch(e=> {
-        console.log('Error'+e);
-    })
-    storageRef.child(file.name).getDownloadURL().then(url=> {
-        console.log(url)
-    
-                firebase.database().ref('Blog/'+counter).set({
-                    id:counter,
-                    link:url,
-                    title:title,
-                    bod: bod,
-                    date: dat,
-                    subject: subject,
 
-                });
-                resetForm();
-                document.getElementById("titleError").style.display="none";
-                document.getElementById("titleValid").style.display="none";
-                document.getElementById("bodyError").style.display="none";
-                document.getElementById("bodyValid").style.display="none";
-                document.getElementById("subjectError").style.display="none";
-                document.getElementById("subjectValid").style.display="none";
-                document.getElementById("fileError").style.display="none";
-                document.getElementById("fileValid").style.display="none";
-                alert('BLog added');
+      let url  = "https://mybrand-page.herokuapp.com/api/post";
+      const http = new XMLHttpRequest()
+      http.open('POST',url)
+      http.setRequestHeader('Content-type', 'application/json')
+      http.send(JSON.stringify(params)) // Make sure to stringify
+      http.onload = function() {
+          // Do whatever with response
+          //alert(http.responseText)
+          resetForm();
+          document.getElementById("cardSection").innerHTML="";
+          readBlog();
+          document.getElementById("titleError").style.display="none";
+          document.getElementById("titleValid").style.display="none";
+          document.getElementById("bodyError").style.display="none";
+          document.getElementById("bodyValid").style.display="none";
+          document.getElementById("subjectError").style.display="none";
+          document.getElementById("subjectValid").style.display="none";
+          document.getElementById("fileError").style.display="none";
+          document.getElementById("fileValid").style.display="none";
+          alert(http.responseText);
+      }
 
-            }).catch(e=> {
-                console.log(e)});
-}
+      
+    }
+
+
+
+
 
 // Validate Functions
 function validate_title(title) {
