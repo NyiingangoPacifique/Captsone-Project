@@ -16,7 +16,11 @@ router.post ('/', async(req,res)=> {
     })
     try {
         const a1 = await post.save()
-        res.json(a1)
+        res.send({
+          data:a1,
+          status:'Ok',
+          message:'Post added successfuly'
+      });
     } catch (error) {
         res.status(400).send(error)
     }
@@ -25,6 +29,7 @@ router.get('/', async(req,res)=> {
     try {
         const post = await Post.find()
         res.json(post)
+        
     } catch (error) {
         res.send('Error' + error)
     }

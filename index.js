@@ -2,6 +2,7 @@ const express = require('express')
 const app = express();
 const dotenv = require('dotenv')
 const mongoose = require('mongoose')
+const cookieParser = require("cookie-parser")
 const cors = require('cors')
 
 //import routes
@@ -24,7 +25,7 @@ mongoose.connect(
 
 //middleware
 app.use(express.json())
-
+app.use(cookieParser());
 
 app.use(cors())
 

@@ -45,30 +45,11 @@ router.post('/Register', async(req,res)=>{
 //login
 
 router.post('/login', async(req,res) => {
-    //validate
-    /*const { error } = loginValidation(req.body)
-    if (error) return res.status(400).send(error.details[0].message)
-
-    const user = await User.findOne({ email: req.body.email })
-    if (!user) return res.status(400).send('Email is not found')
-    //password is correct
-    const validPass = await bcrypt.compare(req.body.password, user.password)
-    if(!validPass) return res.status(400).send('Invalid password')
-
-    
-    //create and assign a token
-    const token = jwt.sign({_id: user._id}, process.env.TOKEN_SECRET)
-    res
-    .header('auth-token', token)
-    .send(token)
-
-    //res.send('Logged in!');*/
-    //const user = await User.findOne({ email: req.body.email })
-    const {error} = loginValidation(req.body)
-   if(error)return res.status(400).send(error.details[0].message)
+  const {error} = loginValidation(req.body)
+  if(error)return res.status(400).send(error.details[0].message)
 
 
-    const userFound = await User.findOne({ email: req.body.email });
+  const userFound = await User.findOne({ email: req.body.email });
   if (userFound) {
     const validPass = await bcrypt.compare(req.body.password, userFound.password)
     if (validPass) {
@@ -78,17 +59,14 @@ router.post('/login', async(req,res) => {
       };
       const token = jwt.sign({_id: userFound._id}, process.env.TOKEN_SECRET)
       //const token = jwt.sign(data, 'basha', { expiresIn: '1h' });
+
       return res.status(200).json({
         status: 200,
         message: 'User signed in successfully',
         data: userFound,
         token: token,
       });
-    } else {
-      return res.status(401).json({
-        status: 401,
-        error: 'Incorrect email/password2',
-      });
+      
     }
   } else {
     return res.status(401).json({
@@ -98,4 +76,42 @@ router.post('/login', async(req,res) => {
   }
 
 })
+
+const authorization = (req, res, next) => {
+  const token = req.cookies.access_token;
+  if (!token) {
+    return res.sendStatus(403);
+  }
+  try {
+    const data = jwt.verify(token, "YOUR_SECRET_KEY");
+    req.userId = data.id;
+    req.userRole = data.role;
+    return next();
+  } catch {
+    return res.sendStatus(403);
+  }
+};
+
+
+router.get("/login1", (req, res) => {
+  const token = jwt.sign({ id: 7, role: "captain" }, "YOUR_SECRET_KEY");
+  return res
+    .cookie("access_token", token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+    })
+    .status(200)
+    .json({ message: "Logged in successfully 😊 👌" });
+});
+
+router.get("/logout1", authorization, (req, res) => {
+  return res
+    .clearCookie("access_token")
+    .status(200)
+    .json({ message: "Successfully logged out 😏 🍀" });
+});
+router.get('/logout', async(req,res) => {
+  req.logout();
+  res.redirect('/');
+});
 module.exports=router

@@ -6,32 +6,34 @@ const router = express.Router();
 
 //add comments
 
-router.post ('/comment', async(req,res)=> {
-    const comment = new Comment({
-        name: req.body.name,
-        email: req.body.email,
-        comment: req.body.comment,
-        post_id:req.body.postId,
-      });
-
-      const postFound=await Post.findOne({_id:req.body.postId});
-      if(!postFound){
-        res.status(404).send({ message:'comment are related with a post'}) 
-      }else{
-        await comment.save();
+router.post('/post/:id/comment', async (req, res) => {
+   const id = req.params.id;
+   const comment = new Comment({
+   text: req.body.comment,
+   post: id
+})
+  // save comment
+await comment.save();
+const postRelated = await Post.findById(id);
+postRelated.comments.push(comment);
+await postRelated.save(function(err) {
+if(err) {console.log(err)}
         res.send({
             data:comment,
             status:'Ok',
             message:'comment added successfuly'
         });
-      } 
 })
+
+})
+
 router.get('/comment', async(req,res)=> {
-    try {
-        const comment = await Comment.find()
-        res.json(comment)
-    } catch (error) {
-        res.send('Error' + error)
-    }
+  try {
+      const comment = await Comment.find()
+      res.json(comment)
+  } catch (error) {
+      res.send('Error' + error)
+  }
 })
+
 module.exports = router;
